@@ -14,7 +14,7 @@ class MainActivity_viewflipper02_exam : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.viewflipper02_exam)
 
-        title = "dfa"
+        title = "뷰플리퍼 2"
 
         val btnStart = findViewById<Button>(R.id.btnStart)
         val btnStop = findViewById<Button>(R.id.btnStop)

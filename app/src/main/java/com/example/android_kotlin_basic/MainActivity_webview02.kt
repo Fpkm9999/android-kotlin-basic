@@ -1,5 +1,6 @@
 package com.example.android_kotlin_basic
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
@@ -13,11 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity_webview02 : AppCompatActivity() {
 
     // 전역 변수 선언
-    lateinit var editURL: EditText
-    lateinit var btnGo: Button
-    lateinit var btnback: Button
-    lateinit var webView: WebView
+    private lateinit var editURL: EditText
+    private lateinit var btnGo: Button
+    private lateinit var btnback: Button
+    private lateinit var webView: WebView
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.webview02_exam)
@@ -25,8 +27,6 @@ class MainActivity_webview02 : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setIcon(R.drawable.web)
 
-
-        //
         editURL = findViewById(R.id.editURL)
         btnGo = findViewById(R.id.btnGo)
         btnback = findViewById(R.id.btnBack)
@@ -34,14 +34,12 @@ class MainActivity_webview02 : AppCompatActivity() {
 
         webView.webViewClient = myWebViewClient()
 
-
-
         val webSet = webView.settings
         webSet.builtInZoomControls = true
         webSet.javaScriptEnabled = true
 
         btnGo.setOnClickListener {
-//            Toast.makeText(applicationContext, editURL.text.toString(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, editURL.text.toString(), Toast.LENGTH_SHORT).show()
             webView.loadUrl(editURL.text.toString())
         }
 
@@ -53,7 +51,6 @@ class MainActivity_webview02 : AppCompatActivity() {
     // 내부 클래스 로 작업
     // webViewClinet 를 상속 받는 MyWebViewClinet 클래스를 정의
     class myWebViewClient : WebViewClient() {
-
 
         override fun shouldInterceptRequest(view: WebView?, url: String?): WebResourceResponse? {
             return super.shouldInterceptRequest(view, url)
